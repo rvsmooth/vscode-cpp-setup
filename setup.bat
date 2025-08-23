@@ -4,12 +4,12 @@ set "currentDir=%~dp0%"
 set "zipFile=winlibs.zip"
 set "destFolder=C:\"
 
-powershell -Command "Expand-Archive -Path '$currentDir%\%zipFile%' -DestinationPath '%destFolder%' -Force"
+powershell -Command "Expand-Archive -Path '%currentDir%\%zipFile%' -DestinationPath '%destFolder%' -Force"
 
 echo Done
 
 echo Installing VSCode
-set "installer=$currentDir\vscode.exe"
+set "installer=%currentDir%\vscode.exe"
 "%installer%" /silent
 echo Done
 
