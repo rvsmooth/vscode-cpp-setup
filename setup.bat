@@ -1,17 +1,16 @@
 @echo off
 
-set "currentDir=%~dp0%"
+set "currentDir=%~dp0"
 set "zipFile=winlibs.zip"
 set "destFolder=C:\"
+set "sevenzip=C:\Program Files\7-Zip\7z.exe"
 
 echo Installing 7zip
-%currentDir%\7zip.exe \S
+%currentDir%\7zip.exe /S
 echo Done
 
-call %currentDir%\refrenv.bat
-
 echo Setting up gcc
-7z x %zipFile% -o%destFolder%
+"%sevenzip%" x "%currentDir%%zipFile%" -o"%destFolder%"
 
 echo Installing VSCode
 set "installer=%currentDir%\vscode.exe"
