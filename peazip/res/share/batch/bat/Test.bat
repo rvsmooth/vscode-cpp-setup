@@ -1,1 +1,0 @@
-"%~dp0..\..\..\..\peazip.exe" -ext2test %1
