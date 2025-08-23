@@ -1,10 +1,11 @@
 @echo off
 
 set "currentDir=%~dp0%"
+set "peazip=%currentDir%\peazip\peazip.exe"
 set "zipFile=winlibs.zip"
 set "destFolder=C:\"
 
-powershell -Command "Expand-Archive -Path '%currentDir%\%zipFile%' -DestinationPath '%destFolder%' -Force"
+%peazip% -ext2folder -o"%destFolder%" '%zipFile%'
 
 echo Done
 
