@@ -1,13 +1,17 @@
 @echo off
 
 set "currentDir=%~dp0%"
-set "peazip=%currentDir%\peazip\peazip.exe"
 set "zipFile=winlibs.zip"
 set "destFolder=C:\"
 
-%peazip% -ext2folder -o"%destFolder%" '%zipFile%'
-
+echo Installing 7zip
+%currentDir%\7zip.exe \S
 echo Done
+
+call %currentDir%\refrenv.bat
+
+echo Setting up gcc
+7z x %zipFile% -o%destFolder%
 
 echo Installing VSCode
 set "installer=%currentDir%\vscode.exe"
