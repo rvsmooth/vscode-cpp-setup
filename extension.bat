@@ -3,7 +3,7 @@
 set "currentDir=%~dp0"
 
 echo Installing C/C++ extension for VSCode
-set "extension=%currentDir%\c.vsix"
+set "extension=%currentDir%\cpptools.vsix"
 code --install-extension "%extension%"
 echo Done
 
