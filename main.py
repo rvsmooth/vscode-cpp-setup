@@ -54,8 +54,7 @@ else:
 
 print("Adding mingw64 to path")
 command_arg = f"%PATH%;{gcc_path}"
-subprocess.run(["setx", "/M", "PATH", command_arg])
+subprocess.run(["setx", "/M", "PATH", command_arg], shell=True)
 
 print("Setup complete")
 input("Press any key to exit")
-os.system("pause")
