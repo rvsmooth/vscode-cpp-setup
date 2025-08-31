@@ -9,10 +9,9 @@ script_dir = os.path.abspath(os.path.dirname(sys.argv[0]))
 sevenzip_path = os.path.join(script_dir, "7zip.exe")
 winlibs_path = os.path.join(script_dir, "winlibs.zip")
 vs_code_path = os.path.join(script_dir, "vscode.exe")
-gcc_path = os.path.abspath(os.path.join(os.environ["HOMEDRIVE"], "mingw64", "bin"))
-
 cpp_dir = os.path.join(script_dir, "cpptools.vsix")
 cmd = [vs_code_path, "/VERYSILENT", "/NORESTART", '/MERGETASKS="!runcode"']
+gcc_path = os.path.abspath("C:\\mingw64\\bin")
 code_path = os.path.abspath(
     os.path.join(
         os.environ["LOCALAPPDATA"], "Programs", "Microsoft VS Code", "bin", "code.cmd"
@@ -54,8 +53,9 @@ else:
     run_cmd(sevenzip_executable, "x", winlibs_path, "-oC:")
 
 print("Adding mingw64 to path")
-if shutil.which("gcc"):
-    print("compiler is already in path")
-else:
-    set_path = os.path.join(script_dir, "set_path.bat")
-    subprocess.run(set_path, shell=True)
+command_arg = f"%PATH%;{gcc_path}"
+subprocess.run(["setx", "/M", "PATH", command_arg])
+
+print("Setup complete")
+input("Press any key to exit")
+os.system("pause")
