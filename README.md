@@ -17,7 +17,7 @@ It installs and sets up,
 - [7zip](https://www.7-zip.org/)
 
 so we precisely need those, download them and put them in the same folder
-as of the [binary](https://github.com/rvsmooth/vscode-cpp-setup/releases/latest/download/setup.exe) and rename the files as follows,
+as of the [binary](https://github.com/rvsmooth/vscode-cpp-setup/releases/latest/download/vsc.exe) and rename the files as follows,
 vscodebinary - `vscode.exe`
 winlibs archive - `winlibs.zip`
 cpptools extension - `cpptools.vsix`
