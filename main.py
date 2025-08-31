@@ -25,14 +25,12 @@ sevenzip_executable = os.path.abspath(
 
 def run_cmd(path_to_exec, args, args_2nd=None, args_3rd=None):
     args = shlex.split(args)
-    if not path_to_exec and args:
-        print("arguments not given")
-    else:
+    if path_to_exec and args:
         cmd = [path_to_exec] + args
-    if args_2nd:
-        cmd += shlex.split(args_2nd)
-    if args_3rd:
-        cmd += shlex.split(args_3rd)
+    if path_to_exec and args and args_2nd:
+        cmd = [path_to_exec] + args + [args_2nd]
+    if path_to_exec and args and args_2nd and args_3rd:
+        cmd = [path_to_exec] + args + [args_2nd] + [args_3rd]
     subprocess.run(cmd)
 
 
@@ -59,4 +57,5 @@ print("Adding mingw64 to path")
 if shutil.which("gcc"):
     print("compiler is already in path")
 else:
-    run_cmd("setx", r'setx PATH "%PATH%;C:\mingw64\bin" /M')
+    set_path = os.path.join(script_dir, "set_path.bat")
+    subprocess.run(set_path, shell=True)
