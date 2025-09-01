@@ -18,9 +18,9 @@ It installs and sets up,
 
 so we precisely need those, download them and put them in the same folder
 as of the [binary](https://github.com/rvsmooth/vscode-cpp-setup/releases/latest/download/vsc.exe) and rename the files as follows,
-vscodebinary - `vscode.exe`
-winlibs archive - `winlibs.zip`
-cpptools extension - `cpptools.vsix`
-7zip - `7zip.exe`
++ vscodebinary - `vscode.exe`
++ winlibs archive - `winlibs.zip`
++ cpptools extension - `cpptools.vsix`
++ 7zip - `7zip.exe`
 
 and then run setup.exe as administrator
