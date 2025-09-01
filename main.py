@@ -6,10 +6,11 @@ import shlex
 
 script_dir = os.path.abspath(os.path.dirname(sys.argv[0]))
 
+# relevant paths used by main()
 sevenzip_path = os.path.join(script_dir, "7zip.exe")
 winlibs_path = os.path.join(script_dir, "winlibs.zip")
 vs_code_path = os.path.join(script_dir, "vscode.exe")
-cpp_dir = os.path.join(script_dir, "cpptools.vsix")
+cpp_path = os.path.join(script_dir, "cpptools.vsix")
 gcc_path = os.path.abspath("C:\\mingw64\\bin")
 code_path = os.path.abspath(
     os.path.join(
@@ -41,7 +42,7 @@ def main():
         run_cmd(vs_code_path, '/VERYSILENT /NORESTART /MERGETASKS="!runcode"')
 
     print("Installing cpp extension")
-    run_cmd(code_path, "--install-extension", cpp_dir)
+    run_cmd(code_path, "--install-extension", cpp_path)
 
     print("Installing 7zip")
     run_cmd(sevenzip_path, "/S")
