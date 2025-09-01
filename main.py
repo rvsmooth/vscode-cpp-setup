@@ -10,7 +10,6 @@ sevenzip_path = os.path.join(script_dir, "7zip.exe")
 winlibs_path = os.path.join(script_dir, "winlibs.zip")
 vs_code_path = os.path.join(script_dir, "vscode.exe")
 cpp_dir = os.path.join(script_dir, "cpptools.vsix")
-cmd = [vs_code_path, "/VERYSILENT", "/NORESTART", '/MERGETASKS="!runcode"']
 gcc_path = os.path.abspath("C:\\mingw64\\bin")
 code_path = os.path.abspath(
     os.path.join(
@@ -33,28 +32,34 @@ def run_cmd(path_to_exec, args, args_2nd=None, args_3rd=None):
     subprocess.run(cmd)
 
 
-# Main execution
-if shutil.which("code"):
-    print("VSCode is already installed!!")
-else:
-    print("Installing vscode")
-    run_cmd(vs_code_path, '/VERYSILENT /NORESTART /MERGETASKS="!runcode"')
+# Main function
+def main():
+    if shutil.which("code"):
+        print("VSCode is already installed!!")
+    else:
+        print("Installing vscode")
+        run_cmd(vs_code_path, '/VERYSILENT /NORESTART /MERGETASKS="!runcode"')
 
-print("Installing cpp extension")
-run_cmd(code_path, "--install-extension", cpp_dir)
+    print("Installing cpp extension")
+    run_cmd(code_path, "--install-extension", cpp_dir)
 
-print("Installing 7zip")
-run_cmd(sevenzip_path, "/S")
+    print("Installing 7zip")
+    run_cmd(sevenzip_path, "/S")
 
-print("Extracting winlibs")
-if os.path.exists(gcc_path):
-    print("GCC is already installed")
-else:
-    run_cmd(sevenzip_executable, "x", winlibs_path, "-oC:")
+    print("Extracting winlibs")
+    if os.path.exists(gcc_path):
+        print("GCC is already installed")
+    else:
+        run_cmd(sevenzip_executable, "x", winlibs_path, "-oC:")
 
-print("Adding mingw64 to path")
-command_arg = f"%PATH%;{gcc_path}"
-subprocess.run(["setx", "/M", "PATH", command_arg], shell=True)
+    print("Adding mingw64 to path")
+    command_arg = f"%PATH%;{gcc_path}"
+    subprocess.run(["setx", "/M", "PATH", command_arg], shell=True)
+    print("Setup complete")
 
-print("Setup complete")
+
+# main execution
+main()
+
+# wait for user input to exit
 input("Press any key to exit")
