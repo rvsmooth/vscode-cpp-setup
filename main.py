@@ -54,8 +54,8 @@ def main():
         run_cmd(sevenzip_executable, "x", winlibs_path, "-oC:")
 
     print("Adding mingw64 to path")
-    command_arg = f"%PATH%;{gcc_path}"
-    subprocess.run(["setx", "/M", "PATH", command_arg], shell=True)
+    command_arg = f"{os.environ['PATH']};{gcc_path}"
+    subprocess.run(["setx", "/M", "PATH", command_arg])
     print("Setup complete")
 
 
